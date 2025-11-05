@@ -12,6 +12,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * THIS CLASS IS NOT USED FOR NOW - IT'S BEEN FUSED --> CHECK PATTERNGESTUREVIEW
+ */
+
 public class PatternView extends View {
     private static final int GRID_SIZE = 3;
     private static final float DOT_RADIUS = 40f;

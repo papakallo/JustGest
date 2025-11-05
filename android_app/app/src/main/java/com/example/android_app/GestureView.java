@@ -15,6 +15,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+/*
+ * THIS CLASS IS NOT USED FOR NOW - IT'S BEEN FUSED --> CHECK PATTERNGESTUREVIEW
+ */
+
 public class GestureView extends View {
 
     private ArrayList<GesturePoint> gesturePoints = new ArrayList<>();
