@@ -41,4 +41,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation("com.github.wEaVAn:fastdtw:1.2.9")
+    implementation("com.google.code.gson:gson:2.10.1")
 }
