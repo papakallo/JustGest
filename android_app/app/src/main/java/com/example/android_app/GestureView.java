@@ -15,6 +15,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+/*
+ * THIS CLASS IS NOT USED FOR NOW - IT'S BEEN FUSED --> CHECK PATTERNGESTUREVIEW
+ */
+
 public class GestureView extends View {
 
     private ArrayList<GesturePoint> gesturePoints = new ArrayList<>();
@@ -23,14 +27,14 @@ public class GestureView extends View {
     public GestureView(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
-        paint.setColor(Color.CYAN);
+        paint.setColor(Color.argb(100, 0, 255, 255));
         paint.setStrokeWidth(8);
         paint.setStyle(Paint.Style.STROKE);
     }
 
     @Override
-    public void onDrawForeground(Canvas canvas) {
-        super.onDrawForeground(canvas);
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         for (int i = 1; i < gesturePoints.size(); i++) {
             GesturePoint p1 = gesturePoints.get(i - 1);
             GesturePoint p2 = gesturePoints.get(i);
@@ -54,6 +58,7 @@ public class GestureView extends View {
                 gesturePoints.add(new GesturePoint(x, y, time, pressure));
                 break;
             case MotionEvent.ACTION_UP:
+                if (listener != null) listener.onGestureComplete();
                 saveGestureToJson();
                 break;
         }
@@ -96,4 +101,14 @@ public class GestureView extends View {
             e.printStackTrace();
         }
     }
+    private OnGestureCompleteListener listener;
+
+    public interface OnGestureCompleteListener {
+        void onGestureComplete();
+    }
+
+    public void setOnGestureCompleteListener(OnGestureCompleteListener l) {
+        this.listener = l;
+    }
+
 }

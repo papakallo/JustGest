@@ -5,7 +5,7 @@ import matplotlib.animation as animation
 from matplotlib.animation import PillowWriter
 
 # load json file
-with open("data/gesture_1761839901287.json") as f:
+with open("data/gesture_1762364598141.json") as f:
     data = json.load(f)
 
 # point by point
