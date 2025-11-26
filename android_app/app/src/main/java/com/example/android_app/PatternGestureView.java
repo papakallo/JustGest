@@ -42,6 +42,9 @@ public class PatternGestureView extends View {
     // callback
     private OnPatternCompleteListener listener;
 
+    private String lastGestureJson = null;
+
+
     public PatternGestureView(Context context) {
         super(context);
         init();
@@ -151,6 +154,7 @@ public class PatternGestureView extends View {
                 // finalize and save
                 addRawPoint(ex, ey, t, pressure);
                 currentPos = null;
+                lastGestureJson = createGestureJson();
                 saveGestureToJson();
                 if (listener != null) {
                     listener.onPatternComplete(patternOrderToArray());
@@ -181,6 +185,33 @@ public class PatternGestureView extends View {
                 patternOrder.add(i);
                 break;
             }
+        }
+    }
+
+    private String createGestureJson() {
+        try {
+            JSONObject root = new JSONObject();
+
+            JSONArray arrPattern = new JSONArray();
+            for (Integer idx : patternOrder) arrPattern.put(idx);
+            root.put("pattern_order", arrPattern);
+
+            JSONArray arrPoints = new JSONArray();
+            for (int i = 0; i < rawPoints.size(); i++) {
+                PointF p = rawPoints.get(i);
+                JSONObject obj = new JSONObject();
+                obj.put("x", p.x);
+                obj.put("y", p.y);
+                obj.put("time", rawTimes.get(i));
+                obj.put("pressure", rawPressures.get(i));
+                arrPoints.put(obj);
+            }
+            root.put("points", arrPoints);
+
+            return root.toString();
+        } catch (Exception e) {
+            Log.e(TAG, "createGestureJson error", e);
+            return null;
         }
     }
 
@@ -225,6 +256,10 @@ public class PatternGestureView extends View {
         int[] a = new int[patternOrder.size()];
         for (int i = 0; i < patternOrder.size(); i++) a[i] = patternOrder.get(i);
         return a;
+    }
+
+    public String getLastGestureJson() {
+        return lastGestureJson;
     }
 
     // callback interface
