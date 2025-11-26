@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1F21">
+
+    <TextView
+        android:id="@+id/textJustGest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="JustGest"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#A494C5"
+        android:letterSpacing="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/subtitleText"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/subtitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Biometric Gesture Authentication"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#8A7FA5"
+        app:layout_constraintTop_toBottomOf="@id/textJustGest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/writeButton"
+        android:layout_marginBottom="64dp"/>
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:text="New Gesture"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#A494C5"
+        app:layout_constraintTop_toBottomOf="@id/subtitleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/unlockButton"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/unlockButton"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:text="Unlock"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="#7A6A95"
+        app:layout_constraintTop_toBottomOf="@id/writeButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
